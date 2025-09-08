@@ -68,6 +68,26 @@
         ]
       }
     ],
+        "global": {
+      "anchors": [
+        {
+          "anchor": "富强",
+          "href": "https://docs.taoli.org",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "民主",
+          "href": "https://docs.taoli.org",
+          "icon": "slack"
+        },
+        {
+          "anchor": "文明",
+          "href": "https://docs.taoli.org",
+          "icon": "newspaper"
+        }
+      ]
+    }
+  },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
