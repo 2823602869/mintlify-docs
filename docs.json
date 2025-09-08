@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "颜如玉",
         "groups": [
           {
             "group": "Getting started",
@@ -48,7 +48,7 @@
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "黄金屋",
         "groups": [
           {
             "group": "API documentation",
@@ -71,18 +71,18 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "anchor": "富强",
+          "href": "",
           "icon": "book-open-cover"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
+          "anchor": "民主",
+          "href": "",
           "icon": "slack"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "anchor": "文明",
+          "href": "",
           "icon": "newspaper"
         }
       ]
@@ -96,7 +96,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:admin@taoli.org"
       }
     ],
     "primary": {
