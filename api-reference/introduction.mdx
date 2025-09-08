@@ -1,33 +1,69 @@
----
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
----
-
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
-
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
-
-## Authentication
-
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+### 升级gcc版本
+#### 升级glibc前提之一
+#### 1.下载gcc安装包
+下载gcc-9.2包：（[https://mirrors.aliyun.com/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.gz](https://mirrors.aliyun.com/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.gz)）
+解压包
+```bash copy
+tar -zxvf gcc-9.2.0.tar.gz
+cd gcc-9.2.0/
 ```
+需要下载4个依赖包
+```bash copy
+./contrib/download_prerequisites
+#下载的依赖包如下
+#说明可以在此路径查看/contrib/download_prerequisites
+```
+> gmp-6.1.0.tar.bz2
+> mpfr-3.1.4.tar.bz2
+> mpc-1.0.3.tar.gz
+> isl-0.18.tar.bz2
+>
+> 官网地址：ftp://gcc.gnu.org/pub/gcc/infrastructure/
+如果有如下报错，可能是压缩软件不全所致：
+```bash copy
+tar (child): Error is not recoverable: exiting now
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now
+#只需执行 sudo apt install bzip2 即可。（CentOS系统执行 sudo yum install bzip2 ）
+```
+#### 2.编译
+```bash copy
+#创建编译文件存放目录
+mkdir gcc-9.2.0-build
+cd gcc-9.2.0-build/
+#编译
+../configure --prefix=/usr --enable-multilib --enable-languages=c,c++ -disable-multilib
+```
+![image](https://taoli-blog.oss-cn-shanghai.aliyuncs.com/next-images/image-20250708141253-jg8vh9t.png "编译完成截图")
+configure命令选项解释
+- --prefix=/usr
+  指定软件安装的根目录为 `/usr`。默认情况下，软件通常安装在 `/usr/local`，使用该选项可覆盖默认路径。例如：  
+  - 可执行文件将安装到 `/usr/bin`  
+  - 库文件将安装到 `/usr/lib`  
+  - 头文件将安装到 `/usr/include`
+- --enable-multilib
+  启用多库支持(Multilib)，允许编译器生成针对不同架构(如32位和64位)的库文件。这在需要同时支持多种目标平台的场景下非常有用。启用后：  
+  - 系统可同时编译和运行32位与64位程序  
+  - 编译时间可能增加，磁盘空间占用也会增大  
+- --enable-languages=c,c++ 
+  指定启用编译的语言支持，仅编译C和C++语言的前端工具。其他语言(如Fortran、Java等)将被禁用，可减少编译依赖和安装包大小。
+- -disable-multilib
+  禁用多库支持(与 `--enable-multilib` 相反)。该选项会：  
+  - 仅生成与当前系统架构匹配的库(例如在64位系统上只生成64位库)  
+  - 缩短编译时间，减少磁盘空间占用  
+  - 避免多架构之间的潜在冲突  
+注意事项
+1. `--enable-multilib` 和 `-disable-multilib` 同时出现时，后者会覆盖前者，最终效果为禁用多库支持。  
+2. 这些选项通常在软件源代码目录中通过 `./configure` 脚本执行，用于定制编译和安装过程。
+#### 3.编译安装
+```bash copy
+make
+make install
+```
+![image](https://taoli-blog.oss-cn-shanghai.aliyuncs.com/next-images/image-20250708154045-r48gb6p.png "make完成截图")
+
+![image](https://taoli-blog.oss-cn-shanghai.aliyuncs.com/next-images/image-20250708160839-emmoay7.png "make install完成截图")
+
+#### 4.查看是否升级成功
+
+![image](https://taoli-blog.oss-cn-shanghai.aliyuncs.com/next-images/image-20250708161007-aponk28.png "升级成功截图")
