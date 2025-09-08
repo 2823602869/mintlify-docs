@@ -72,17 +72,17 @@
       "anchors": [
         {
           "anchor": "富强",
-          "href": "",
+          "href": "#",
           "icon": "book-open-cover"
         },
         {
           "anchor": "民主",
-          "href": "",
+          "href": "#",
           "icon": "slack"
         },
         {
           "anchor": "文明",
-          "href": "",
+          "href": "#",
           "icon": "newspaper"
         }
       ]
