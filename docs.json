@@ -51,7 +51,7 @@
         "tab": "黄金屋",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "升级glibc",
             "pages": [
               "api-reference/introduction"
             ]
